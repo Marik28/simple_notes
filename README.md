@@ -1,4 +1,5 @@
 #NOTES
+
 This is my test project - API service for keeping notes 
 This service allows you to create, update, delete notes
 
@@ -27,6 +28,7 @@ You'll need to install required python packages by following command:
 ## Provided URL with request methods:
 
 #GET / 
+
 Returns a list of notes in the following format:
 
     {
@@ -73,6 +75,7 @@ If data is correct, creates a new note and returns its id:
         "success": true,
         "note_id": "4ec8a398-8465-46de-ab3c-3981f3329bae"
     }
+
 
 ##PUT / 
 
