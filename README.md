@@ -19,15 +19,20 @@ Where
 * __text__ - text of a note
 * __creation_date_timestamp__ - integer, _unix timestamp_, date the note was created
 * __update_date_timestamp__ - integer, _unix timestamp_, date the note was last edited
-To get started just copy this repository
 
-You'll need to install required python packages by following command:
+# Installation and launch:
+
+> $ git clone https://github.com/Marik28/simple_notes.git
+
+> $ cd simple_notes
 
 > $ pip install -r requirements.txt
 
-## Provided URL with request methods:
+> $ python manage.py runserver
 
-# GET / 
+# Provided URL with request methods:
+
+## GET / 
 
 Returns a list of notes in the following format:
 
@@ -85,7 +90,7 @@ This method is used to update data of an existing note by its id. If update was 
         "success": true
     }
 
-Example:
+Request example:
 
     {
         "id": "dc991384-9561-4e73-bf58-aab45154d8bd",
@@ -97,10 +102,10 @@ Example:
 
 This method is used to delete a note by given id. If a note was deleted successfully, returns status 204
 
-Example:
+Request example:
 
     {
-        "id": "dc991384-9561-4e73-bf58-aab45154d8bd",
+        "id": "dc991384-9561-4e73-bf58-aab45154d8bd"
     }
 
 ## GET /\<note-id>
