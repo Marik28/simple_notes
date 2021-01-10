@@ -1,4 +1,3 @@
-import datetime as dt
 import uuid
 
 from django.db import models
@@ -14,6 +13,7 @@ class Note(models.Model):
     update_date = models.DateTimeField('update_date', auto_now=True)
 
     def __str__(self):
+        """Returns a string representation of a note"""
         return self.title
 
     def creation_date_timestamp(self) -> int:
@@ -25,4 +25,5 @@ class Note(models.Model):
         return int(self.update_date.timestamp())
 
     def get_absolute_url(self):
+        """Returns an absolute url-address of a note"""
         return reverse(viewname="note_detail", kwargs={"id": self.id})
