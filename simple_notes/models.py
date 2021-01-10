@@ -2,6 +2,7 @@ import datetime as dt
 import uuid
 
 from django.db import models
+from django.urls import reverse
 
 
 class Note(models.Model):
@@ -22,3 +23,6 @@ class Note(models.Model):
     def update_date_timestamp(self) -> int:
         """Returns a timestamp of a note last update date"""
         return int(self.update_date.timestamp())
+
+    def get_absolute_url(self):
+        return reverse(viewname="note_detail", kwargs={"id": self.id})

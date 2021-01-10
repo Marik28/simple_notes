@@ -5,5 +5,5 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.NoteListAPIView.as_view()),
-    url(r'^(?P<id>[\w-]+)$', views.NoteDetailAPIView.as_view()),
+    url(r'^(?P<id>[\w-]+)$', views.NoteDetailAPIView.as_view(), name="note_detail"),
 ]
