@@ -13,19 +13,18 @@ class NoteListView(generics.ListCreateAPIView):
 
     def create(self, request: Request, *args, **kwargs):
         """Method used to create a new note instance.
-        If provided data is valid, creates new note and returns response with status 201,
-        full note info and 'Location' header with note's url address """
+        If provided data is valid, creates a new note and returns a response with empty body, status 201
+        and 'Location' header with note's url address """
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         note = self.perform_create(serializer)
-        resp_serializer = NoteDetailSerializer(note, many=False)
         headers = self.get_success_headers(note)
-        return Response(data=resp_serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+        return Response(status=status.HTTP_201_CREATED, headers=headers)
 
-    def perform_create(self, serializer):
+    def perform_create(self, serializer) -> Note:
         return serializer.save()
 
-    def get_success_headers(self, note):
+    def get_success_headers(self, note: Note):
         """Adds 'Location' header with note's url address """
         return {'Location': note.get_absolute_url()}
 
