@@ -1,14 +1,18 @@
-# pull official base image
-FROM python:3
+FROM python:3.9
 
-# set work directory
 WORKDIR /usr/src/notes
-# set environment variables
+
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
-# install dependencies
-COPY requirements.txt .
+
+COPY . .
+
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
-# copy project
-COPY . .
+
+RUN chmod +x /usr/src/notes/entrypoint.sh
+RUN ls -l .
+
+EXPOSE 8000
+
+ENTRYPOINT ["/usr/src/notes/entrypoint.sh"]
