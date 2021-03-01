@@ -3,12 +3,12 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 
 from .models import Note
-from .serializers import NoteDetailSerializer, NoteListSerializer
+from .serializers import NoteDetailSerializer
 
 
 class NoteListView(generics.ListCreateAPIView):
     """View for listing of all notes and creating a new note."""
-    serializer_class = NoteListSerializer
+    serializer_class = NoteDetailSerializer
     queryset = Note.objects.all()
 
     def create(self, request: Request, *args, **kwargs):
@@ -34,3 +34,9 @@ class NoteDetailView(generics.RetrieveUpdateDestroyAPIView):
     lookup_field = 'id'
     serializer_class = NoteDetailSerializer
     queryset = Note.objects.all()
+
+    def update(self, request, *args, **kwargs):
+        """Performs default update method changes response's status code to 204"""
+        response: Response = super().update(request, *args, **kwargs)
+        response.status_code = status.HTTP_204_NO_CONTENT
+        return response
