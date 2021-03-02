@@ -36,32 +36,29 @@ Where
 
 Returns a list of notes in the following format:
 
-    {
-        "success": true,
-        "note": [
-            {
-                "id": "fc812336-e545-41a9-96fd-61b1601d443c",
-                "title": "kekw",
-                "text": "lol",
-                "creation_date_timestamp": 1607432910,
-                "update_date_timestamp": 1607432910
-            },
-            {
-                "id": "e38c0144-54df-4783-bb86-200586774c4a",
-                "title": "a kak kakat'",
-                "text": "vot v chem vopros",
-                "creation_date_timestamp": 1607436479,
-                "update_date_timestamp": 1607436479
-            },
-            {
-                "id": "dc991384-9561-4e73-bf58-aab45154d8bd",
-                "title": "а так?",
-                "text": "текст",
-                "creation_date_timestamp": 1607443463,
-                "update_date_timestamp": 1607443463
-            }
-        ]
-    }
+    [
+        {
+            "id": "fc812336-e545-41a9-96fd-61b1601d443c",
+            "title": "kekw",
+            "text": "lol",
+            "creation_date_timestamp": 1607432910,
+            "update_date_timestamp": 1607432910
+        },
+        {
+            "id": "e38c0144-54df-4783-bb86-200586774c4a",
+            "title": "to be or not to be",
+            "text": "vot v chem vopros",
+            "creation_date_timestamp": 1607436479,
+            "update_date_timestamp": 1607436479
+        },
+        {
+            "id": "dc991384-9561-4e73-bf58-aab45154d8bd",
+            "title": "а так?",
+            "text": "текст",
+            "creation_date_timestamp": 1607443463,
+            "update_date_timestamp": 1607443463
+        }
+    ]
 
 ## POST /
 
@@ -74,40 +71,21 @@ Required request:
         "text": "som text"
     }
 
-If data is correct, creates a new note and returns its id:
-
-    {
-        "success": true,
-        "note_id": "4ec8a398-8465-46de-ab3c-3981f3329bae"
-    }
-
-
-## PUT / 
+## PUT /\{note_id} 
 
 This method is used to update data of an existing note by its id. If update was successful, returns 
-    
-    {
-        "success": true
-    }
 
 Request example:
 
     {
-        "id": "dc991384-9561-4e73-bf58-aab45154d8bd",
         "title": "new title",
         "text": "new text"
     }
 
-## DELETE / 
+## DELETE /\{note_id} 
 
 This method is used to delete a note by given id. If a note was deleted successfully, returns status 204
 
-Request example:
+## GET /\{note-id}
 
-    {
-        "id": "dc991384-9561-4e73-bf58-aab45154d8bd"
-    }
-
-## GET /\<note-id>
-
-Returns a note by given id
+Returns a note instance.
