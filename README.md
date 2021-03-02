@@ -73,7 +73,7 @@ Required request:
 
 ## PUT /\{note_id} 
 
-This method is used to update data of an existing note by its id. If update was successful, returns 
+This method is used to update data of an existing note
 
 Request example:
 
@@ -84,7 +84,7 @@ Request example:
 
 ## DELETE /\{note_id} 
 
-This method is used to delete a note by given id. If a note was deleted successfully, returns status 204
+This method is used to delete a note.
 
 ## GET /\{note-id}
 
