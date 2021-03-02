@@ -21,10 +21,10 @@ class NoteListView(generics.ListCreateAPIView):
         headers = self.get_success_headers(note)
         return Response(status=status.HTTP_201_CREATED, headers=headers)
 
-    def perform_create(self, serializer) -> Note:
+    def perform_create(self, serializer):
         return serializer.save()
 
-    def get_success_headers(self, note: Note):
+    def get_success_headers(self, note: Note) -> dict:
         """Adds 'Location' header with note's url address """
         return {'Location': note.get_absolute_url()}
 
@@ -35,7 +35,7 @@ class NoteDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = NoteDetailSerializer
     queryset = Note.objects.all()
 
-    def update(self, request, *args, **kwargs):
+    def update(self, request, *args, **kwargs) -> Response:
         """Performs default update method changes response's status code to 204"""
         response: Response = super().update(request, *args, **kwargs)
         response.status_code = status.HTTP_204_NO_CONTENT
