@@ -10,9 +10,9 @@ COPY . .
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-RUN chmod +x /usr/src/notes/entrypoint.sh
+RUN ["chmod", "a+x", "/usr/src/notes/entrypoint.sh"]
 RUN ls -l .
 
 EXPOSE 8000
 
-ENTRYPOINT ["/usr/src/notes/entrypoint.sh"]
+ENTRYPOINT ["sh", "/usr/src/notes/entrypoint.sh"]
